@@ -974,3 +974,6 @@
     }
 
 }
+body {
+    touch-action: none;
+}
