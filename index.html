@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Haven with you ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+<div class="bg"></div>
+
+<!-- MUSIC -->
+<audio id="introMusic" loop>
+    <source src="panaginip.mp3" type="audio/mp3">
+</audio>
+
+<audio id="mainMusic" loop>
+    <source src="hiraya.mp3" type="audio/mp3">
+</audio>
+
+<!-- INTRO -->
+<div class="intro" id="intro">
+
+    <div class="intro-bg"></div>
+
+    <div class="card">
+        <h1 class="title">Our Story ❤️</h1>
+        <p class="sub">A memory we never lost</p>
+
+        <button class="btn" onclick="openStory()">📍 Where Everything Started</button>
+        <button class="music-btn" onclick="toggleIntroMusic()">🎵 Play Music</button>
+    </div>
+
+</div>
+
+<!-- APP -->
+<div id="app">
+
+    <!-- 🌹 WELCOME PAGE -->
+    <section class="page active">
+
+        <div class="welcome-bg"></div>
+
+        <div class="welcome-text">
+            <h2>Welcome sa gallery ko ❤️</h2>
+            <p>
+                Hambal nila "love at first sight does not exist" gin prove mo gid sila sala, langga.
+            </p>
+        </div>
+
+        <div class="gallery">
+
+            <div class="photo-card" data-text="First date kun diin huya pa ang duwa ka genuine souls. Where I saw a spark na may future kita duwa hihi">
+                <div class="inner">
+                    <div class="front"><img src="img3.jpg"></div>
+                    <div class="back"></div>
+                </div>
+            </div>
+
+            <div class="photo-card" data-text="First photo booth with you. I was so happy to have you as my partner.">
+                <div class="inner">
+                    <div class="front"><img src="img4.jpg"></div>
+                    <div class="back"></div>
+                </div>
+            </div>
+
+            <div class="photo-card" data-text="First memories that I will never forget, you made everything feel special.">
+                <div class="inner">
+                    <div class="front"><img src="img5.jpg"></div>
+                    <div class="back"></div>
+                </div>
+            </div>
+
+            <div class="photo-card" data-text="If I could pause time, it would always be moments with you.">
+                <div class="inner">
+                    <div class="front"><img src="img6.jpg"></div>
+                    <div class="back"></div>
+                </div>
+            </div>
+
+            <div class="photo-card" data-text="First hug that made everything feel right.">
+                <div class="inner">
+                    <div class="front"><img src="img7.jpg"></div>
+                    <div class="back"></div>
+                </div>
+            </div>
+
+            <div class="photo-card" data-text="First time together doing simple things that became unforgettable.">
+                <div class="inner">
+                    <div class="front"><img src="img8.jpg"></div>
+                    <div class="back"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- 💞 US PAGE (FIXED VIDEO WALL) -->
+    <section class="page us">
+<div class="us-bg"></div>
+
+<div class="us-glow"></div>
+<div class="us-vignette"></div>
+
+<div class="floating-hearts">
+    <span>💖</span>
+    <span>❤️</span>
+    <span>💞</span>
+    <span>💘</span>
+    <span>💕</span>
+</div>
+    <div class="us-bg"></div>
+
+    <div class="welcome-text">
+        <h2>  I miss YOU💞</h2>
+        <p>memories made, more to discover with you!</p>
+    </div>
+
+    <div class="video-wall">
+
+        <div class="video-card active" onclick="toggleVideo(this)">
+            <video src="hug12.mp4" muted loop></video>
+            <div class="caption">First TikTok lapit ma dakpan ni tita.. 💞</div>
+        </div>
+
+        <div class="video-card" onclick="toggleVideo(this)">
+            <video src="tiki.mp4" muted loop></video>
+            <div class="caption">Your genuine laughter always amazes me langga ko 🌸</div>
+        </div>
+
+        <div class="video-card" onclick="toggleVideo(this)">
+            <video src="flower.mp4" muted loop></video>
+            <div class="caption">Flowers suit you better with me 💕</div>
+        </div>
+
+        <div class="video-card" onclick="toggleVideo(this)">
+            <video src="booth.mp4" muted loop></video>
+            <div class="caption">Bukaw & Kalbo date ❤️</div>
+        </div>
+
+    </div>
+
+</section>
+
+    <!-- 📸 MEMORIES -->
+    <section class="page memories">
+
+    <div class="mem-bg"></div>
+
+    <div class="welcome-text">
+        <h2>Memories 📖</h2>
+        <p>Six months, six love letters</p>
+    </div>
+
+    <div class="letter-grid">
+
+        <div class="letter" onclick="openLetter(1)">
+            <h3>Month 1</h3>
+            <p>The day you said yes...</p>
+        </div>
+
+        <div class="letter" onclick="openLetter(2)">
+            <h3>Month 2</h3>
+            <p>Valentines...</p>
+        </div>
+
+        <div class="letter" onclick="openLetter(3)">
+            <h3>Month 3</h3>
+            <p>Birthday...</p>
+        </div>
+
+        <div class="letter" onclick="openLetter(4)">
+            <h3>Month 4</h3>
+            <p>Graduation...</p>
+        </div>
+
+        <div class="letter" onclick="openLetter(5)">
+            <h3>Month 5</h3>
+            <p>Cinema...</p>
+        </div>
+
+        <div class="letter" onclick="openLetter(6)">
+            <h3>Month 6</h3>
+            <p>Gawahon...</p>
+        </div>
+
+    </div>
+
+    <!-- POPUP LETTER -->
+    <div class="letter-popup" id="letterPopup">
+        <div class="letter-content">
+            <span class="close" onclick="closeLetter()">×</span>
+            <h2 id="letterTitle"></h2>
+            <p id="letterText"></p>
+        </div>
+    </div>
+
+</section>
+
+
+    <!-- 🌹 FINAL PAGE -->
+    <section class="page final">
+
+        <div class="love-bg"></div>
+
+        <!-- DECOR -->
+        <div class="cute-decor left">
+            <img src="snoopy1.jpg">
+            <img src="snoopy2.jpg">
+            <img src="nailong1.jpg">
+        </div>
+
+        <div class="cute-decor right">
+            <img src="nailong2.jpg">
+            <img src="snoopy3.jpg">
+            <img src="nailong3.jpg">
+        </div>
+
+        <!-- FINAL MESSAGE -->
+        <div class="final-text">
+
+            <h2>💌 Final Message</h2>
+
+            <p id="type1">
+                This day is not only our Monthsarry but a moment of realization that we have gone this far to love and appreciate one another. You loved me in moments I could not even love myself, and thats my WHY!
+            </p>
+
+            <p class="name">My langga — Yani ❤️</p>
+
+            <p id="type2">
+                Ikaw ang greatest what if ko. You made me realize what real love feels like. You were the greatest thing that has happened to me in my SHS year, thankyou. Not for lovinf me alone but for also bringing out the best in me. My pato!
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+    <button onclick="prev()">⬆</button>
+    <button onclick="next()">⬇</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

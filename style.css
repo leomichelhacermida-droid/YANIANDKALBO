@@ -1,0 +1,939 @@
+body{
+    margin:0;
+    font-family:Poppins;
+    overflow:hidden;
+}
+
+/* 🌹 MAIN CINEMATIC BACKGROUND */
+.bg{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at top, rgba(255,46,99,0.9), transparent 45%),
+        radial-gradient(circle at bottom, rgba(106,0,255,0.5), transparent 55%),
+        linear-gradient(#0a0005,#000);
+    z-index:-10;
+}
+
+/* INTRO */
+.intro{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+.intro-bg{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(rgba(255,105,180,.25), rgba(0,0,0,.6)),
+    url("721574827_990803350402864_2796397910281236254_n.jpg");
+    background-size:cover;
+    background-position:center;
+}
+
+.card{
+    z-index:2;
+    background:rgba(255,255,255,0.12);
+    padding:40px;
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    backdrop-filter:blur(15px);
+}
+
+.title{font-size:3rem;color:white;}
+.sub{color:white;opacity:0.8;}
+
+.btn,.music-btn{
+    padding:10px 18px;
+    border:none;
+    border-radius:20px;
+    background:#ff4d94;
+    color:white;
+    cursor:pointer;
+}
+
+/* APP */
+#app{
+    display:none;
+}
+
+/* PAGE SYSTEM */
+.page{
+    display:none;
+    height:100vh;
+    width:100%;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    position:relative;
+}
+
+.page.active{
+    display:flex;
+}
+
+/* 🌹 WELCOME BACKGROUND */
+.welcome-bg{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at top left, rgba(255,46,99,0.4), transparent 50%),
+        radial-gradient(circle at bottom right, rgba(106,0,255,0.4), transparent 55%),
+        radial-gradient(circle at center, rgba(255,0,150,0.2), transparent 60%),
+        linear-gradient(#0a0005,#000);
+    z-index:0;
+}
+
+/* 💖 WELCOME TEXT */
+.welcome-text{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    margin-bottom:25px;
+    animation:fadeIn 1.2s ease;
+}
+
+.welcome-text h2{
+    font-size:3.5rem;
+    color:#ffb3c6;
+    text-shadow:0 0 20px rgba(255,80,140,0.6);
+}
+
+.welcome-text p{
+    color:#ffd6e0;
+    opacity:0.9;
+}
+
+/* 💖 GALLERY */
+.gallery{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    z-index:2;
+    padding:10px;
+}
+
+/* 💌 PHOTO CARD */
+.photo-card{
+    width:165px;
+    height:235px;
+    perspective:1000px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.photo-card:hover{
+    transform:translateY(-10px) scale(1.06);
+    z-index:5;
+}
+
+/* INNER */
+.inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transform-style:preserve-3d;
+    transition:0.9s;
+}
+
+/* FRONT */
+.front, .back{
+    position:absolute;
+    inset:0;
+    backface-visibility:hidden;
+    border-radius:15px;
+}
+
+/* IMAGE */
+.front img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:15px;
+    filter:brightness(1.1) contrast(1.15) saturate(1.1);
+    box-shadow:0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* BACK (FIXED TRANSPARENCY + READABILITY) */
+.back{
+    transform:rotateY(180deg);
+    background:linear-gradient(
+        135deg,
+        rgba(255,77,148,0.55),
+        rgba(106,0,255,0.45)
+    );
+
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:14px;
+
+    font-size:0.85rem;
+    line-height:1.3rem;
+}
+
+/* FLIP */
+.photo-card.active .inner{
+    transform:rotateY(180deg);
+}
+
+/* ZOOM (FIXED - NO NESTING BUG) */
+.photo-card.active{
+    position:fixed;
+    left:6%;
+    top:50%;
+    transform:translateY(-50%) scale(1.9);
+    z-index:999;
+    filter:drop-shadow(0 0 12px rgba(255,80,140,0.35));
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* CONTROLS */
+.controls{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:9999;
+}
+
+/* 🌹 FINAL PAGE */
+.final{
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* FINAL BACKGROUND */
+.love-bg{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at top, rgba(255,46,99,0.95), transparent 45%),
+        radial-gradient(circle at center, rgba(255,0,150,0.4), transparent 60%),
+        radial-gradient(circle at bottom, rgba(106,0,255,0.5), transparent 55%),
+        linear-gradient(#120005,#000);
+    z-index:0;
+}
+
+/* FINAL TEXT */
+.final-text{
+    position:relative;
+    z-index:2;
+    max-width:650px;
+    text-align:center;
+    padding:20px;
+}
+
+.final-text h2{
+    font-family:"Great Vibes", cursive;
+    font-size:4.5rem;
+    color:#fff;
+}
+
+.final-text p{
+    font-family:"Playfair Display", serif;
+    font-size:1.2rem;
+    color:#ffe6ea;
+    line-height:1.8;
+}
+
+.name{
+    font-family:Poppins;
+    font-size:1.3rem;
+    color:#ffd1dc;
+}
+
+/* FLOATING DECOR */
+.cute-decor{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    z-index:2;
+}
+
+.cute-decor.left{left:20px;}
+.cute-decor.right{right:20px;}
+
+.cute-decor img{
+    width:65px;
+    height:65px;
+    object-fit:cover;
+    border-radius:14px;
+    animation:floaty 4s ease-in-out infinite;
+    box-shadow:0 0 12px rgba(255,255,255,0.25);
+}
+
+.cute-decor img:nth-child(1){animation-delay:0s;}
+.cute-decor img:nth-child(2){animation-delay:0.4s;}
+.cute-decor img:nth-child(3){animation-delay:0.8s;}
+
+@keyframes floaty{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0);}
+}
+/* 💖 US BACKGROUND */
+.us{
+    position:relative;
+}
+
+.us-bg{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at top, rgba(255,46,99,0.35), transparent 55%),
+        radial-gradient(circle at bottom, rgba(106,0,255,0.35), transparent 60%),
+        linear-gradient(#0a0005,#000);
+    z-index:0;
+}
+
+/* 💞 VIDEO GRID */
+.video-wall{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:20px;
+    z-index:2;
+    position:relative;
+    padding:20px;
+}
+
+/* 🎞️ VIDEO CARD */
+.video-card{
+    width:260px;
+    height:160px;
+    border-radius:15px;
+    overflow:hidden;
+    cursor:pointer;
+    position:relative;
+    transition:0.4s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* VIDEO STYLE */
+.video-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* HOVER EFFECT */
+.video-card:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px rgba(255,80,140,0.4);
+}
+
+/* 💖 ACTIVE (EXPANDED VIDEO) */
+.video-card.active{
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%) scale(2);
+    z-index:999;
+    width:420px;
+    height:260px;
+    box-shadow:0 0 40px rgba(255,80,140,0.5);
+}
+
+/* DARK BACKDROP WHEN OPEN */
+.video-card.active::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    z-index:-1;
+}
+/* 💞 VIDEO WALL ROMANTIC UPGRADE */
+.video-wall{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:25px;
+    padding:20px;
+    z-index:2;
+}
+
+/* 🎞️ CARD */
+.video-card{
+    position:relative;
+    width:260px;
+    height:160px;
+    border-radius:16px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:0.5s ease;
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* 🎥 VIDEO */
+.video-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    /* 💖 ROMANTIC FILTER */
+    filter:brightness(0.9) contrast(1.1) saturate(1.2) sepia(0.15);
+    transition:0.5s ease;
+}
+
+/* 🌫️ HOVER BLUR EFFECT */
+.video-card:hover video{
+    filter:brightness(1.05) blur(1.5px) saturate(1.3);
+    transform:scale(1.05);
+}
+
+/* 💌 CAPTION */
+.caption{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:10px;
+    font-size:0.85rem;
+    text-align:center;
+    color:#fff;
+    background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+    font-family:"Playfair Display", serif;
+    letter-spacing:0.5px;
+}
+
+/* 💖 ACTIVE (FOCUS MODE) */
+.video-card.active{
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%) scale(2);
+    z-index:999;
+    width:420px;
+    height:260px;
+    box-shadow:0 0 40px rgba(255,80,140,0.5);
+}
+
+/* 🌫️ BACKGROUND BLUR WHEN ACTIVE */
+.video-card.active::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.55);
+    z-index:-1;
+}
+/* 💞 US CINEMATIC BACKGROUND */
+.us{
+    position:relative;
+    overflow:hidden;
+}
+
+.us-bg{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at top left, rgba(255,46,99,0.35), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(106,0,255,0.35), transparent 60%),
+        radial-gradient(circle at center, rgba(255,0,150,0.15), transparent 70%),
+        linear-gradient(#0a0005,#000);
+    z-index:0;
+}
+
+/* 💞 VIDEO WALL (MORE CINEMATIC SPACING) */
+.video-wall{
+    position:relative;
+    z-index:2;
+
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:35px;
+
+    padding:40px;
+}
+
+/* 🎞️ VIDEO CARD (DEPTH + FLOAT) */
+.video-card{
+    width:260px;
+    height:170px;
+    border-radius:18px;
+    overflow:hidden;
+    position:relative;
+    cursor:pointer;
+
+    transition:0.5s ease;
+    box-shadow:0 15px 30px rgba(0,0,0,0.4);
+
+    transform:translateY(0);
+}
+
+/* 💫 FLOAT EFFECT */
+.video-card:hover{
+    transform:translateY(-10px) scale(1.04);
+}
+
+/* 🎥 VIDEO ROMANTIC FILTER */
+.video-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    filter:brightness(0.85) contrast(1.1) saturate(1.25) sepia(0.12);
+    transition:0.5s ease;
+}
+
+/* 🌫️ HOVER SOFT BLUR */
+.video-card:hover video{
+    filter:brightness(1.05) blur(1px) saturate(1.3);
+}
+
+/* 💌 CAPTION (NOW ANIMATED + NOT FLAT) */
+.caption{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:10px;
+
+    font-size:0.9rem;
+    text-align:center;
+
+    color:#fff;
+    background:linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+
+    font-family:"Playfair Display", serif;
+    letter-spacing:0.4px;
+
+    opacity:0;
+    transform:translateY(10px);
+    transition:0.4s ease;
+}
+
+/* SHOW CAPTION ON HOVER */
+.video-card:hover .caption{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* 💖 ACTIVE (FOCUS MODE) */
+.video-card.active{
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%) scale(2);
+    z-index:999;
+    width:420px;
+    height:260px;
+
+    box-shadow:0 0 40px rgba(255,80,140,0.6);
+}
+/* 💞 MOVIE MODE US SECTION */
+.us{
+    position:relative;
+    overflow:hidden;
+}
+
+/* CINEMATIC BACKGROUND */
+.us-bg{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at top, rgba(255,46,99,0.4), transparent 55%),
+        radial-gradient(circle at bottom, rgba(106,0,255,0.35), transparent 60%),
+        linear-gradient(#0a0005,#000);
+    z-index:0;
+}
+
+/* 🎬 FRAME */
+.movie-frame{
+    position:relative;
+    z-index:2;
+    width:100%;
+    height:420px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* 🎞️ EACH SLIDE */
+.movie-card{
+    position:absolute;
+    width:420px;
+    height:260px;
+
+    opacity:0;
+    transform:scale(0.95);
+    transition:all 1s ease;
+
+    border-radius:18px;
+    overflow:hidden;
+
+    box-shadow:0 0 40px rgba(255,80,140,0.25);
+}
+
+/* ACTIVE SLIDE */
+.movie-card.active{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* VIDEO */
+.movie-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    filter:brightness(0.85) contrast(1.1) saturate(1.2) sepia(0.1);
+}
+
+/* CAPTION (MOVIE STYLE) */
+.caption{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:12px;
+
+    background:linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color:white;
+
+    font-family:"Playfair Display", serif;
+    text-align:center;
+
+    font-size:1rem;
+    letter-spacing:0.5px;
+}
+/* 💞 US SECTION */
+.us{
+    position:relative;
+    overflow:hidden;
+}
+
+/* CINEMATIC BACKGROUND */
+.us-bg{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at top, rgba(255,46,99,0.35), transparent 55%),
+        radial-gradient(circle at bottom, rgba(106,0,255,0.3), transparent 60%),
+        linear-gradient(#0a0005,#000);
+    z-index:0;
+}
+
+/* GRID */
+.video-wall{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:25px;
+
+    padding:30px;
+}
+
+/* CARD */
+.video-card{
+    position:relative;
+    height:180px;
+    border-radius:16px;
+    overflow:hidden;
+
+    cursor:pointer;
+    transition:0.6s ease;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* VIDEO */
+.video-card video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    filter:brightness(0.85) contrast(1.1) saturate(1.2) sepia(0.12);
+    transition:0.5s ease;
+}
+
+/* CAPTION ALWAYS VISIBLE */
+.caption{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    padding:10px;
+
+    color:#fff;
+    font-size:0.9rem;
+    text-align:center;
+
+    background:linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+
+    font-family:"Playfair Display", serif;
+}
+
+/* HOVER EFFECT */
+.video-card:hover{
+    transform:scale(1.04);
+}
+
+/* 💖 ACTIVE (ZOOM MODE) */
+.video-card.active{
+    position:fixed;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%) scale(2);
+    width:420px;
+    height:260px;
+    z-index:999;
+
+    box-shadow:0 0 45px rgba(255,80,140,0.5);
+}
+
+/* DARK BACKDROP */
+.video-card.active::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(6px);
+    z-index:-1;
+}
+/* 🌹 DEEP CINEMATIC BACKGROUND LAYERS */
+.us{
+    position:relative;
+    overflow:hidden;
+}
+
+/* BASE LIGHTING */
+.us-bg{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,0,80,0.35), transparent 55%),
+        radial-gradient(circle at 80% 70%, rgba(120,0,255,0.35), transparent 60%),
+        linear-gradient(#050008,#000);
+    z-index:0;
+}
+
+/* 🔥 GLOW MOVEMENT LAYER */
+.us-glow{
+    position:absolute;
+    inset:-50%;
+    background:radial-gradient(circle, rgba(255,0,120,0.15), transparent 60%);
+    animation:moveGlow 8s ease-in-out infinite alternate;
+    z-index:1;
+}
+
+@keyframes moveGlow{
+    0%{transform:translate(-10%,-10%) scale(1);}
+    100%{transform:translate(10%,10%) scale(1.2);}
+}
+
+/* 🌑 VIGNETTE (MOVIE DARK EDGES) */
+.us-vignette{
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle, transparent 40%, rgba(0,0,0,0.85) 100%);
+    z-index:2;
+}
+
+/* 💞 FLOATING HEARTS */
+.floating-hearts{
+    position:absolute;
+    inset:0;
+    z-index:3;
+    pointer-events:none;
+}
+
+.floating-hearts span{
+    position:absolute;
+    bottom:-50px;
+    font-size:20px;
+    opacity:0.6;
+    animation:floatUp 10s linear infinite;
+}
+
+.floating-hearts span:nth-child(1){left:10%; animation-delay:0s;}
+.floating-hearts span:nth-child(2){left:30%; animation-delay:2s;}
+.floating-hearts span:nth-child(3){left:50%; animation-delay:4s;}
+.floating-hearts span:nth-child(4){left:70%; animation-delay:6s;}
+.floating-hearts span:nth-child(5){left:90%; animation-delay:8s;}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+    20%{opacity:0.6;}
+    100%{
+        transform:translateY(-110vh);
+        opacity:0;
+    }
+}
+/* 💌 MEMORIES BACKGROUND */
+.memories{
+    position:relative;
+    overflow:hidden;
+}
+
+.mem-bg{
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(circle at top, rgba(255,40,90,0.35), transparent 55%),
+        radial-gradient(circle at bottom, rgba(120,0,255,0.35), transparent 60%),
+        linear-gradient(#070008,#000);
+    z-index:0;
+}
+
+/* 📖 GRID */
+.letter-grid{
+    position:relative;
+    z-index:2;
+
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+
+    padding:30px;
+}
+
+/* 💌 LETTER CARD */
+.letter{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+
+    padding:20px;
+    border-radius:15px;
+    cursor:pointer;
+
+    transition:0.4s ease;
+    color:#ffd6e0;
+    text-align:center;
+}
+
+.letter:hover{
+    transform:translateY(-8px) scale(1.03);
+    background:rgba(255,255,255,0.12);
+}
+
+/* 💌 POPUP */
+.letter-popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    backdrop-filter:blur(8px);
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.letter-content{
+    width:420px;
+    max-height:70vh;
+    overflow-y:auto;
+
+    background:linear-gradient(135deg,#fff0f6,#ffe6f0);
+    padding:25px;
+    border-radius:18px;
+
+    box-shadow:0 0 30px rgba(255,80,140,0.3);
+    font-family:"Playfair Display", serif;
+
+    position:relative;
+}
+
+/* CLOSE BUTTON */
+.close{
+    position:absolute;
+    top:10px;
+    right:15px;
+    font-size:24px;
+    cursor:pointer;
+}
+@media (max-width:768px){
+
+    /* Welcome gallery */
+    .gallery{
+        flex-wrap:wrap;
+        gap:15px;
+    }
+
+    .photo-card{
+        width:120px;
+        height:170px;
+    }
+
+    /* Video wall */
+    .video-wall{
+        grid-template-columns:1fr;
+        width:90%;
+    }
+
+    .video-card{
+        width:100%;
+        height:180px;
+    }
+
+    /* Letter section */
+    .letter-grid{
+        grid-template-columns:1fr;
+        width:90%;
+    }
+
+    /* Final message */
+    .final-text{
+        width:85%;
+        max-width:none;
+    }
+
+    .final-text h2{
+        font-size:3rem;
+    }
+
+    .final-text p{
+        font-size:1rem;
+    }
+
+    /* Cute side decorations */
+    .cute-decor{
+        display:none;
+    }
+
+    /* Zoomed photo */
+    .photo-card.active{
+        left:50%;
+        top:50%;
+        transform:translate(-50%,-50%) scale(1.4);
+    }
+
+    /* Controls */
+    .controls{
+        right:15px;
+        bottom:15px;
+    }
+}
