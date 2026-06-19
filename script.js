@@ -228,3 +228,24 @@ function openLetter(month){
 function closeLetter(){
     document.getElementById("letterPopup").style.display = "none";
 }
+let startY = 0;
+
+document.addEventListener("touchstart", function(e){
+    startY = e.touches[0].clientY;
+});
+
+document.addEventListener("touchend", function(e){
+    let endY = e.changedTouches[0].clientY;
+
+    let diff = startY - endY;
+
+    // swipe up → next page
+    if(diff > 50){
+        next();
+    }
+
+    // swipe down → previous page
+    if(diff < -50){
+        prev();
+    }
+});
